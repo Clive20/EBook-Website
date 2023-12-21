@@ -1,0 +1,126 @@
+﻿@model EBooks.Models.Order
+
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+@using Microsoft.Extensions.Options
+@inject IOptions<EBooks.Data.StripeSetting> Stripe
+<div class="row">
+    <h4 class="mb-3 mt-3">You are buying these books</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Book Name
+                </th>
+                <th>
+                    Price
+                </th>
+                <th>
+                    Qty
+                </th>
+                <th>
+                    Total Price
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                double SubTotalPrice = 0;
+            }
+            @foreach (var item in ViewBag.checkOutItems as ICollection<EBooks.Models.CustomerCartItems>)
+            {
+                SubTotalPrice = SubTotalPrice + item.bookPrice * item.cartQty;
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.bookName)
+                    </td>
+                    <td>
+                        £@Html.DisplayFor(modelItem => item.bookPrice)
+                    </td>
+                    <td>
+
+                        @Html.DisplayFor(modelItem => item.cartQty)
+                    </td>
+                    <td>
+                        £@Html.DisplayFor(modelItem => item.bookTotalPrice)
+                    </td>
+
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
+    <div class="d-flex justify-content-between">
+        <p> <strong>SubTotals : </strong> <span class="text-muted" style="font-size:20px"> £@Math.Round(SubTotalPrice,2)</span></p>
+
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4 card p-3 ">
+        <h5 class="text-center mt-2">Checkout</h5>
+        <hr style="background-color:white" />
+        <h6>Address Details</h6>
+        <form asp-action="Checkout" method="post">
+            @{var multiplySubTotal = SubTotalPrice * 100;}
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" name="chargeTotalAmount" value="@multiplySubTotal" />
+            <div class="form-group">
+                <label asp-for="FullName" class="control-label"></label>
+                <input asp-for="FullName" class="form-control" />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AddressDetail" class="control-label"></label>
+                <textarea asp-for="AddressDetail" class="form-control"></textarea>
+                <span asp-validation-for="AddressDetail" class="text-danger"></span>
+            </div>
+            <div>
+
+                <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                        data-currency="GBP"
+                        data-key="@Stripe.Value.Publishablekey"
+                        data-amount="@multiplySubTotal"
+                        data-name="Pay with card"
+                        data-description="Purchasing EBooks Books"
+                        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                        data-locale="en"
+                        data-zip-code="true">
+                </script>
+                <button type="submit" class="btn btn-success btn-block">Payment</button>
+            </div>
+
+        </form>
+    </div>
+    <div class="col-md-4"></div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script>
+    document.getElementsByClassName("stripe-button-el")[0].style.display = 'none';
+</script>
+
+
+
+
+
+<script>
+    $(function () {
+        $("#checkoutTable").DataTable({
+            
+
+        });
+
+ });</script>
