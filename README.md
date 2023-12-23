@@ -54,3 +54,8 @@ Anyone who loves to read books
    - Order details include time of purchase, name, phone, address, and order status.
 
 # Screenshots
+![Screenshot 2023-12-23 182914](https://github.com/Clive20/EBook-Website/assets/74508019/dab5dce2-10b5-4663-a324-3bcb3c53c1d7)
+![Screenshot 2023-12-23 182954](https://github.com/Clive20/EBook-Website/assets/74508019/2ab104d1-de56-4ff3-8014-221dac9bb94f)
+![Screenshot 2023-12-23 183826](https://github.com/Clive20/EBook-Website/assets/74508019/4b6f8c47-2ebe-4b2a-990b-71fbff522ea7)
+![Screenshot 2023-12-23 183757](https://github.com/Clive20/EBook-Website/assets/74508019/08f22769-6cff-426c-a094-ae6a6707ea9d)
+![Screenshot 2023-12-23 185057](https://github.com/Clive20/EBook-Website/assets/74508019/524764d2-f837-4478-9a53-7280aca62ec0)
