@@ -1,5 +1,5 @@
 # EBook-Website
-The application is called E-Books and intends to sell multiple books with a wide range of book genres 
+This application is called E-Books and intends to sell multiple books with a wide range of book genres 
 such as fantasy fiction, Biographies, and Personal finance to name a few. With Some of the books that 
 can be purchased on the E-Books being Can’t Hurt Me by David Goggins and Lord of The Rings by J.R.R. 
 Tolkien to name a few. The application consists of multiple pages both for customers and the admin 
