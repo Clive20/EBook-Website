@@ -12,6 +12,9 @@ customer to view checkout purchases made on the E-Books website. Lastly SQL serv
 has also been implemented into the code to allow for data such as customer details, books, book 
 genres, cart etc. to be saved on the database through appsettings.json
 
+# Target Audience
+Anyone who loves to read books
+
 # Website Features & Functionality
 1) Website Navigation:
    - Implemented a dark navigation bar using Layout.cshtml.
@@ -49,3 +52,5 @@ genres, cart etc. to be saved on the database through appsettings.json
 8) Manage Orders:
    - Admin can view and manage orders
    - Order details include time of purchase, name, phone, address, and order status.
+
+# Screenshots
